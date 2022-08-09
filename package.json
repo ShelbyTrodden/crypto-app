@@ -1,5 +1,5 @@
 {
-  "name": "rpggame",
+  "name": "crypro-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,13 +10,14 @@
     "test": "jest --coverage"
   },
   "keywords": [],
-  "author": "Bryce Bresnan <bryce.bresnan@gmail.com> , Shelby Trodden <shelby.trodden@gmail.com>, Kasidit Srisawat <paulkasidit@gmail.com>",
+  "author": "Bryce Bresnan <bryce.bresnan@gmail.com> , Evegy Zbirun <evegyzbirun@users.noreply.github.com>, Kasidit Srisawat <paulkasidit@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.6",
     "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.6.0",
+    "dotenv-webpack": "^2.0.0",
     "eslint": "^8.18.0",
     "eslint-webpack-plugin": "^2.7.0",
     "file-loader": "^6.2.0",
