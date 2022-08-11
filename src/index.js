@@ -2,10 +2,10 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import CryptoService from './js/crypto-service.js';
+import Wallet from './js/wallet.js';
 
 async function getCoin(id) {
-  const response = await CryptoService.getBtc(id);
-  console.log(response);
+  const response = await CryptoService.getCoin(id);
   if (response) {
     printElements(response, id);
   } else {
@@ -21,10 +21,18 @@ function printElements(response, id) {
   });
   document.querySelector('#showResponse').innerText = respTextArray;
 } 
-//element.price / input our money return how namy coins we bought.
+//element.price / input our money return how many coins we bought.
 function printError(error, id) {
   document.querySelector('#showResponse').innerText = `There was an error accessing the weather data for ${id}: 
   ${error}.`;
+}
+
+function tradeButton() {
+  event.preventDefault();
+  console.log("working!");
+  const newWallet = new Wallet(1000);
+  newWallet.makeTrade("BTC", 100000);
+  
 }
 
 function handleFormSubmission(event) {
@@ -36,4 +44,5 @@ function handleFormSubmission(event) {
 
 window.addEventListener("load", function() {
   document.querySelector('form').addEventListener("submit", handleFormSubmission);
+  document.querySelector('#walletForm').addEventListener("submit", tradeButton);
 });

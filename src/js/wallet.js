@@ -1,14 +1,15 @@
+import CryptoService from './crypto-service.js';
+
 export default class Wallet {
 
   constructor (usd){
-    this.usd = 0; //1 balance 
+    this.usd = usd; //1 balance 
     this.tradeFunds = 0; //2 amount you would request to be traded 
     this.btcShares = 0; //3 
-    this.loggedTransferRequest = 0;  //2
+    this.logTransRec = [];  //2
   }
 
   initiateTransfer() { //updates balance and logs to transfer request 
-
     const getCurrentBalance = this.usd;  
 
     if (getCurrentBalance < this.tradeFunds){
@@ -21,11 +22,16 @@ export default class Wallet {
   } 
 
 
-  makeTrade()  { 
-
-    return this.tradeFunds / //price of 1 share of bitcoin in USD which we get from our gitCoin(BTC)//
-     = this.btcShares; 
-
+  async makeTrade(id, tradeFunds)  { 
+    let cnData = await CryptoService.getCoin(id);
+    let cnPrice = cnData[0].price;
+    console.log("cnPrice" + cnPrice);
+    console.log("tradeFunds" + tradeFunds);
+    let tradeShares = tradeFunds / cnPrice;
+    console.log("tradeShares" + tradeShares);
+    this.btcShares += tradeShares;
+    this.logTransRec.push(tradeShares);
+    return this.btcShares;
   }
   
   
